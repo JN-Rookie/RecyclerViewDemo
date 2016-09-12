@@ -32,10 +32,12 @@ public class MainActivity extends AppCompatActivity {
         mContext=this;
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         initData();
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL));
-        mRecyclerView.addItemDecoration(new DividerGridItemDecoration(mContext));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
+//        mRecyclerView.addItemDecoration(new DividerGridItemDecoration(mContext));
         mAdapter=new HomeAdapter();
         mRecyclerView.setAdapter(mAdapter);
+        SpacesItemDecoration itemDecoration=new SpacesItemDecoration(20);
+        mRecyclerView.addItemDecoration(itemDecoration);
     }
 
     private void initData() {
@@ -60,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
             holder.tv_Text.setText(mData.get(position).get("text"));
+            for (int i = 0; i < mData.size(); i++) {
+                if(i==position){
+                    holder.tv_Text.setHeight(i*10);
+                }
+
+            }
         }
 
         @Override

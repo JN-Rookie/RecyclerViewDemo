@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
+ * listview格式的间隔类
  * Created by Administrator on 2016/9/12 0012.
  */
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
